@@ -21,15 +21,15 @@
 			<td><input type="text" id="lastName" name="lastName"></td>
 		</tr>
 		<tr>
-			<td><label id="password">Password</label></td>
+			<td><label for="password">Password</label></td>
 			<td><input type="password" id="password" name="password"></td>
 		</tr>
 		<tr>
-			<td><label id="passwordConfirm">PW Confirm</label></td>
-			<td><input type="passwordConfirm" id="passwordConfirm" name="passwordConfirm"></td>
+			<td><label for="passwordConfirm">PW Confirm</label></td>
+			<td><input type="password" id="passwordConfirm" name="passwordConfirm"></td>
 		</tr>
 		<tr>
-			<td><label id="birthday">Password</label></td>
+			<td><label for="birthday">Password</label></td>
 			<td><input type="date" id="birthday" name="birthday"></td>
 		</tr>
 		<tr>
@@ -39,9 +39,9 @@
 						<td><label for="male">Male</label>
 						<input type="radio" id="male" name="gender" value="male">
 						<label for="female">Female</label>
-						<input type="radio" name="gender" value="female">
+						<input type="radio" id="female" name="gender" value="female">
 						<label for="other">Other</label>
-						<input type="radio" name="gender" value="other"></td>
+						<input type="radio" id="other" name="gender" value="other"></td>
 					</tr>
 				</table>
 			</td>
@@ -62,8 +62,9 @@
 				  <option value="Java">Java</option>
 			  </select>
   		</td>
+		</tr>
 		<tr>
-			<td><input type="submit" value="Submit"></td>
+			<td colspan="2"><input type="submit" value="Submit"></td>
 		</tr>
 	</table>
 </form>
