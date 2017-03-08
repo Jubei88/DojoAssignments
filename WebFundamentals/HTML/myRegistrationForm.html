@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Registration Form</title>
+	<meta name="author" content="Joel Burris">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<form action="post">
+
+	<h1>My Registration Form</h1>
+	<table>
+		<tr>
+			<td><label for="firstName">First Name:</label></td>
+			<td><input type="text" id="firstName" name="firstName"></td>
+		</tr>
+		<tr>
+			<td><label for="lastName">First Name:</label></td>
+			<td><input type="text" id="lastName" name="lastName"></td>
+		</tr>
+		<tr>
+			<td><label id="password">Password</label></td>
+			<td><input type="password" id="password" name="password"></td>
+		</tr>
+		<tr>
+			<td><label id="passwordConfirm">PW Confirm</label></td>
+			<td><input type="passwordConfirm" id="passwordConfirm" name="passwordConfirm"></td>
+		</tr>
+		<tr>
+			<td><label id="birthday">Password</label></td>
+			<td><input type="date" id="birthday" name="birthday"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<table>
+					<tr>
+						<td><label for="male">Male</label>
+						<input type="radio" id="male" name="gender" value="male">
+						<label for="female">Female</label>
+						<input type="radio" name="gender" value="female">
+						<label for="other">Other</label>
+						<input type="radio" name="gender" value="other"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">​A short description about yourself:</td>
+		</tr>
+		<tr>
+			<td colspan="2">​<textarea id="txtArea" rows="5" cols="50"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<label for="language">Favorite Language</label>
+				<select name="language" id="language">
+					<option value="Javascript">Javascript</option>
+				  <option value="C#">C#</option>
+				  <option value="PHP">PHP</option>
+				  <option value="Java">Java</option>
+			  </select>
+  		</td>
+		<tr>
+			<td><input type="submit" value="Submit"></td>
+		</tr>
+	</table>
+</form>
+
+</body>
+</html>
