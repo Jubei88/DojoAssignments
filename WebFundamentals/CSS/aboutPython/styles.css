@@ -1,0 +1,213 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper {
+	position: relative;
+	width: 970px;
+	margin: 0 auto;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+section.top {
+	background-color: #2F5073;
+	border-bottom: 2px solid black;
+	margin-bottom: 20px;
+}
+.header img {
+	width: 330px;
+	margin: 20px;
+}
+.header p {
+	padding: 2px 25px;
+	font-size: 12px;
+}
+.header a {
+	color: #DDC257;
+}
+.header span {
+	color: black;
+}
+.search {
+	position: absolute;
+	display: block;
+	top:5px;
+	right: 10px;
+	color: white;
+	text-align: right;
+}
+.findIt {
+	background-color: #444444;
+	width: 265px;
+	height: 60px;
+	margin-top: 5px;
+	border-radius: 10px;
+	text-align: center;
+	-webkit-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+	box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+}
+.findIt input {
+	width: 150px;
+	height: 35px;
+	border: 2px ridge gray;
+  margin: 10px 5px 10px 20px;
+  text-align: center;
+}
+.findIt button {
+	background-color: #2F5073;
+	border: 2px solid grey;
+	border-radius: 3px;
+	height: 35px;
+	color: white;
+	padding: 0 7px;
+	-webkit-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+	box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+}
+.topNav {
+	background-color: #537DA9;
+	width: 810px;
+	margin: 0 auto 25px auto;
+	height: 45px;
+	-webkit-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+	box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+	border-radius: 5px;
+}
+.topNav ul {
+	margin: 0;
+	padding: 0;
+	width: 710px;
+	margin: 0 auto;
+	list-style: none;
+	font-family: sans-serif;
+	font-weight: 300;
+}
+.topNav li {
+	float: left;
+	text-align: center;
+	padding-right:40px;
+}
+.topNav li:last-child {
+	padding-right: 0;
+}
+.topNav a {
+	color: white;
+	text-decoration: none;
+	font-size: 20px;
+	line-height: 45px;
+}
+.verticalNav {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 120px;
+}
+.verticalNav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+.verticalNav li {
+	padding-bottom: 5px;
+}
+.verticalNav a {
+	color: white;
+	font-size: 13px;
+}
+.chevron {
+	color: #DDC257;
+	font-size: 10px;
+	padding-right: 5px;
+}
+main {
+	display: inline-block;
+	width: 580px;
+	color: white;
+	text-align: center;
+  margin-left: 55px;
+  padding-bottom: 25px;
+}
+p {
+	font-size: 13px;
+}
+main ul {
+	color: #DDC257;
+	list-style: none;
+	font-size: 16px;
+	margin: 20px;
+}
+main li {
+	padding-bottom: 5px;
+}
+.zen {
+	font-size: 16px;
+}
+.middle {
+	margin-bottom: 20px;
+}
+.col {
+	border-top: 3px solid #537DA9;
+	width: 380px;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	padding-top: 5px;
+}
+.left {
+	margin-left: 125px;
+}
+.right {
+	margin-left: 20px;
+}
+.col h2 {
+	font-size: 18px;
+	line-height: 26px;
+}
+.col a, .col span {
+	text-decoration: none;
+	color: #afcae6;
+}
+.col span {
+	font-size: 11px;
+}
+.col ul {
+    list-style-type: square;
+    list-style-position: outside;
+    width: 300px;
+    margin: 5px auto;
+    font-size: 13px;
+}
+.col li {
+
+}
+footer {
+	height: 95px;
+	text-align: center;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#305275+0,4372a5+100 */
+background: rgb(48,82,117); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(48,82,117,1) 0%, rgba(67,114,165,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(48,82,117,1) 0%,rgba(67,114,165,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(48,82,117,1) 0%,rgba(67,114,165,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#305275', endColorstr='#4372a5',GradientType=0 ); /* IE6-9 */
+}
+footer span {
+  display: inline-block;
+  font-size: 14px;
+  color: #89b6d6;
+  padding: 40px 15px 15px 15px;
+}
+span.copy {
+	font-size: 11px;
+	padding: 0 0 10px 0;
+}
+
+
+
+
+
+
+
+
