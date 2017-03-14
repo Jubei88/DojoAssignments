@@ -1,0 +1,102 @@
+
+* {
+	margin: 0;
+	padding: 0;
+}
+div.inside {
+	padding: 15px;
+}
+.content p {
+	padding: 10px 5px;
+}
+a {
+	color: white;
+}
+span {
+	color: #5BAEAC;
+}
+.wrapper {
+	background-color: #DCDFD4;
+	color: #C7CCC3;
+	width: 940px;
+	margin: 0 auto;
+  padding: 15px 0;
+}
+header {
+	position: relative;
+	display: block;
+	background-color: #5BAEAC;
+	margin: 0 15px;
+}
+h1 {
+	color: black;
+	font-size: 28px;
+	line-height: 60px;
+	padding: 8px 0 8px 20px;
+	display: inline-block;
+  width: 300px;
+}
+header p {
+  position: absolute;
+  top: 29px;
+  right: 36px;
+  color: white;
+}
+header img {
+	height: 50px;
+  vertical-align: middle;
+  padding: 0 10px 0 0;
+}
+header span {
+  color: white;
+  padding-left: 20px;
+  text-decoration: underline;
+}
+.content {
+	background-color: #F8E69C;
+	margin: 15px 15px 0 15px;
+	padding: 15px;
+}
+.leftSide {
+	display: block;
+	float: left;
+	width: 200px;
+	vertical-align: top;
+}
+.rowOne {
+	display: inline-block;
+	margin-bottom: 35px;
+}
+.rowTwo{
+	display: inline-block;
+	margin-bottom: 35px;
+}
+
+.leftSide, .init, .add, .commit, .remoteAdd, .push, .status {
+	background-color: #203F43;
+	display: inline-block;
+}
+.init, .add, .status {
+	width: 145px;
+	height: 115px;
+	margin-left: 35px;
+	vertical-align: top;
+}
+.commit, .remoteAdd{
+	width: 252px;
+	margin-left: 35px;
+}
+.push {
+	width: 574px;
+	margin-left: 35px;
+}
+footer {
+	background-color: #5BAEAC;
+	text-align: center;
+	color: black;
+	margin: 8px 15px 0 15px;
+  padding: 30px 0;
+}
+footer a {
+	color: initial;
+}
