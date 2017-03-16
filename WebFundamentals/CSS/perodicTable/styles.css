@@ -1,0 +1,38 @@
+div.wrapper {
+	width: 900px;
+	height: 530px;
+	margin: 25px auto;
+	padding: 10px;
+	background-color: #EEEEEE;
+	display: block;
+	text-align: center;
+}
+div {
+	width: 42px;
+	height: 46px;
+	border: 1px solid transparent;
+	margin: 0;
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 2px;
+	font-size: 11px;
+  color: red;
+  box-sizing: border-box;
+}
+.w2 { width: 86px; }
+.w10 { width: 446px; }
+.col3spacer { margin-left: 15px; }
+.blue {	background-color: #689BFF;}
+.salmon { background-color: #FD9A98; }
+.gold { background-color: #F4C50A; }
+.green { background-color: #1FCA21;}
+.middle {line-height: 46px;}
+.blue, .salmon, .gold, .green {
+	color: black; font-size: 10px; 	border: 1px solid black; }
+.blue span, .salmon span, .gold span, .green span {
+	font-size: 13px; 	color: #520952; }
+.greenSection { width: 100%; 	margin-top: 25px; }
+.asteric::before {
+	position: relative; content: "*"; top: 15px; left: -25px; color: red; }
+.asteric2::before {
+	position: relative; content: "**"; top: 15px; left: -25px; color: red; }
