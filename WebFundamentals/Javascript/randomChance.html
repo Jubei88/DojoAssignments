@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<h1>Let's play the slots!</h1>
+<p>You are playing the slots.  Each game cost $.25</p>
+<p>You have a 1 in 100 chance of winning, but when you do win you could win between 50 - 90 quarters!</p>
+<div id="end"></div>
+
+<script type="text/javascript">
+	"use strict";
+// var div = document.getElementById('end')
+// div.innerHTML = '<h3>You are playing the game</h3>';
+
+var bankRole = prompt("How many guarters are you starting with?");
+var winnings = bankRole / 4;
+var play = true;
+
+
+function theGame() {
+	var matchWin = 50;
+	var win = Math.floor(Math.random() * 100);
+	var coinsWon = Math.floor( (Math.random() * 40) + 50);
+
+	if ( win === matchWin ) {
+		bankRole = bankRole + coinsWon;
+		play = confirm("Congrats you WON!! You now have " + bankRole + ". Do you want to play again?");
+
+		if ( play === true ) {
+			theGame();
+		} else {
+			winnings = bankRole / 4;
+			alert("You have left the game with " + bankRole + " quarters. Equaling $" + winnings + "!");
+			endGame();
+		}
+
+	} else {
+		bankRole--;
+		if ( bankRole <= 0 ) {
+			alert("You have no quarters left to play. Refresh the page to play again");
+			endGame()
+			return;
+		}
+
+		play = confirm("Sorry - you lost. You now have " + bankRole + ". Do you want to play again?");
+		if ( play === true ) {
+			theGame();
+		} else {
+			winnings = bankRole / 4;
+			alert("You have left the game with " + bankRole + " quarters. Equaling $" + winnings + "!");
+			endGame()
+		}
+
+	}
+}
+function endGame() {
+	div = document.getElementById('end')
+	div.innerHTML = '<h3>You have left the game.  Refresh to play again</h3>';
+	// document.getElementById('content').appendChild(div);
+}
+
+if ( play === true ) {
+	theGame();
+} else {
+	winnings = bankRole / 4;
+	alert("You have left the game with " + bankRole + " quarters. Equaling $" + winnings + "!");
+	endGame();
+}
+
+
+
+
+</script>
+
+</body>
+</html>
