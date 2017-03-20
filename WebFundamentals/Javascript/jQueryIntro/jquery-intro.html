@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Basics Assignment</title>
+	<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src= 'script.js'></script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<h1>jQuery Basics</h1>
+
+		<p>As you go through each of the examples below you will be using the "click" function.  That is what will trigger the event. The Attr function is used through out the page to select the proper link for the section.</p>
+	</div>
+	<ul>
+
+	</ul>
+	<div id="tabSection">
+		<div class="tab hide-show">
+			<div class="left">
+				<a data-fun="hide" href="#">Hide</a>
+				<a data-fun="show" href="#">Show</a>
+			</div>
+			<div class="right">
+				<p class="function">Hide / Show</p>
+				<p class="hideShow">The text here can be hidden and then shown via a click on the buttons. Using .data to determine which button you are clicking.</p>
+			</div>
+		</div>
+		<div class="tab toggle">
+			<div class="left single">
+				<a href="#">Toggle</a>
+			</div>
+			<div class="right">
+				<p class="function">Toggle</p>
+				<p class="toggle">Or we can toggle the hide and show with a little more interesting effects.</p>
+			</div>
+		</div>
+		<div class="tab slide">
+			<div class="left">
+				<a data-fun="up" href="#">Slide Up</a>
+				<a data-fun="down" href="#">Slide Down</a>
+			</div>
+			<div class="right">
+				<p class="function">Slide Up and Down</p>
+				<p class="slide">Then we can slide something out to hide as well.</p>
+			</div>
+		</div>
+		<div class="tab fade">
+			<div class="left">
+				<a data-fun="fade-out" href="#">Fade Out</a>
+				<a data-fun="fade-in" href="#">Fade In</a>
+			</div>
+			<div class="right">
+				<p class="function">Fade In and Out</p>
+				<p class="fade">Then we can fade something out to hide as well.</p>
+			</div>
+		</div>
+		<div class="tab add-Class">
+			<div class="left single">
+				<a href="#">Add Class</a>
+			</div>
+			<div class="right">
+				<p class="function">Add Class</p>
+				<p class="add-Class">Adding a class to change the look.</p>
+			</div>
+		</div>
+		<div class="tab before-after">
+			<div class="left">
+				<a data-fun="before" href="#">Before</a>
+				<a data-fun="after" href="#">After</a>
+			</div>
+			<div class="right">
+				<p class="function">Before and After</p>
+				<p class="before-after">Adding content in front and behind an element</p>
+			</div>
+		</div>
+		<div class="tab html-text">
+			<div class="left">
+				<a data-fun="html" href="#">HTML</a>
+				<a data-fun="text" href="#">Text</a>
+			</div>
+			<div class="right">
+				<p class="function">Adding HTML vs Text</p>
+				<p>Adding content in HTML format vs text</p>
+				<div class="html-text-holder"></div>
+			</div>
+		</div>
+		<div class="tab append">
+			<div class="left single">
+				<a href="#">Append</a>
+			</div>
+			<div class="right">
+				<p class="function">Append</p>
+				<p class="append">Another way to add content is to append.</p>
+			</div>
+		</div>
+		<div class="tab attr-val">
+			<div class="left single">
+				<a data-fun="value" href="#">Add Value</a>
+			</div>
+			<div class="right">
+				<p class="function">Using Value</p>
+				<p>Taking the value of the button and adding it to the input field</p>
+				<input type="text"></input>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+</body>
+</html>
