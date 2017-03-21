@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dissaearing Dojo Cat</title>
+	<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+</head>
+<style type="text/css">
+	.wrapper {
+		width: 900px;
+		margin: 0 auto;
+	}
+	ul {
+		list-style: none
+	}
+	li {
+		float: left;
+		width: 200px;
+		padding: 0 0 15px 15px;
+	}
+	img {
+		width: 200px;
+	}
+	a {
+		color: white;
+		text-decoration: none;
+		padding: 0 15px;
+		font-size: 14px;
+		line-height: 22px;
+		background-color: green;
+	}
+</style>
+<body>
+<div class="wrapper">
+	<h2>Disappearing Ninja - jQuery assignment #1</h2>
+
+	<ul>
+		<li><img src="dojocat.jpg" alt="find the cat"></li>
+		<li><img src="dojocat.jpg" alt="find the cat"></li>
+		<li><img src="dojocat.jpg" alt="find the cat"></li>
+		<li><img src="dojocat.jpg" alt="find the cat"></li>
+		<li><img src="dojocat.jpg" alt="find the cat"></li>
+		<li><img src="dojocat.jpg" alt="find the cat"></li>
+		<li><img src="dojocat.jpg" alt="find the cat"></li>
+		<li><img src="dojocat.jpg" alt="find the cat"></li>
+	</ul>
+	<a href="#">Restore</a>
+</div>
+
+<script type="text/javascript">
+	$('img').click(function(event) {
+		$(this).hide();
+	});
+	$('a').click(function(event) {
+		$('img').show();
+	});
+</script>
+
+</body>
+</html>
