@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hovering In/Out</title>
+	<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+	<style type="text/css">
+		.wrapper {
+			width: 300px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+
+<div class="wrapper">
+	<div><img src="images/ninja0.png" alt="image changing game" /></div>
+	<div><img src="images/ninja1.png" alt="image changing game" /></div>
+	<div><img src="images/ninja2.png" alt="image changing game" /></div>
+	<div><img src="images/ninja3.png" alt="image changing game" /></div>
+	<div><img src="images/ninja4.png" alt="image changing game" /></div>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var orig;
+
+	$('img').hover(function() {
+		orig = $(this).attr('src');
+		$(this).attr({src: 'images/cat1.png'});
+	}, function() {
+		$(this).attr({src: orig});
+	});
+});
+
+</script>
+
+</body>
+</html>
