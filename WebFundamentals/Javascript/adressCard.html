@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Address Cards</title>
+	<script src="script/jquery-3.2.0.min.js"></script>
+<!-- 	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+ -->
+ <style type="text/css">
+ 	.wrapper {
+ 		width: 940px;
+ 		margin: 0 auto;
+ 	}
+ 	.left, .right {
+ 		display: inline-block;
+ 		vertical-align: top;
+ 		box-sizing: border-box;
+ 	}
+ 	.left {	width: 40%; }
+ 	.right {	width: 55% }
+ 	.fname, .lname {
+ 		display: inline-block;
+	  width: 300px;
+	  text-align: right;
+	  padding: 10px;
+	}
+	.description {
+		margin: 30px 0 20px 0;
+	}
+ 	textarea {
+ 		width: 81%;
+  	height: 150px;
+ 	}
+	[type="submit"] {
+		background-color: brown;
+		color: white;
+		padding: 0 15px;
+		font-size: 16px;
+		line-height: 24px;
+	}
+	.right div {
+		width: 80%;
+		height: 150px;
+		overflow: scroll;
+		margin: 5px auto;
+		border: 1px solid brown;
+		vertical-align: middle;
+		text-align: center;
+	}
+	.right h3 {
+		font-size: 22px;
+		line-height: 28px;
+		color: brown;
+	}
+	.right h5 {
+		color: black;
+		font-size: 14px;
+		line-height: 22px;
+	}
+	.hide {
+		display: none;
+	}
+
+ </style>
+ </head>
+<body>
+<div class="wrapper">
+	<div class="left">
+	<h1>Address Cards</h1>
+	<form>
+		<div class="fname">
+			<label for="FirstName">First Name:</label>
+			<input id="FirstName" type="text" name="FirstName">
+		</div>
+		<div class="lname">
+			<label for="LastName">Last Name:</label>
+			<input id= LastName type="text" name="LastName">
+		</div>
+		<div class="description">
+			<label for="description">Description:</label><br>
+			<textarea id="description" name="description"></textarea>
+		</div>
+
+		<input type="submit" value="Add User">
+	</form>
+
+	</div>
+	<div class="right">
+
+	</div>
+
+
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	function attachHandlers(element) {
+			$('element').click( function() {
+				alert('You clicked an H3!');
+			});
+	}
+
+		var moreInfo;
+		$("form").submit(function(e) {
+			e.preventDefault();
+			var formPT = [];
+			formPT.push( $('.fname input').val() );
+			formPT.push( $('.lname input').val() );
+			formPT.push( $('textarea').text() );
+
+
+		$('.right').prepend('<div><h1>' + $('.fname input').val() + ' ' +  $('.lname input').val() +  '</h1><h5>Click for Description!</h5><p class="hide">' + $('.description textarea').val() + '</p></div>');
+
+		});
+		$(document).on('click', '.right div', function(e){
+			e.preventDefault();
+			$(this).children('h1,h5,p').toggleClass('hide');
+		});
+
+	});
+
+</script>
+
+</body>
+</html>
