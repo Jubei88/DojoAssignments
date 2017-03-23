@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Users Table</title>
+	<script src="script/jquery-3.2.0.min.js"></script>
+</head>
+<style type="text/css">
+td, th {
+	padding: 0 15px;
+}
+.fname, .lname, .phone, .email, .phone {
+  width: 300px;
+  text-align: right;
+  padding: 10px;
+}
+	[type="submit"] {
+		background-color: brown;
+		color: white;
+		margin-left: 35px;
+	}
+</style>
+<body>
+
+<dir class="wrapper">
+<h2>Users</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+			</tr>
+		</thead>
+	</table>
+
+	<h2>Add Users</h2>
+	<form>
+		<div class="fname">
+			<label for="FirstName">First Name:</label>
+			<input type="text" name="FirstName">
+		</div>
+		<div class="lname">
+			<label for="LastName">Last Name:</label>
+			<input type="text" name="LastName">
+		</div>
+		<div class="email">
+			<label for="Email">Email:</label>
+			<input type="email" name="Email">
+		</div>
+		<div class="phone">
+			<label for="Phone">Phone:</label>
+			<input type="phone" name="Phone">
+		</div>
+		<input type="submit" value="Add User">
+	</form>
+
+</dir>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(':input').css('border', '2px solid brown');
+
+		$("form").submit(function(e) {
+			e.preventDefault();
+			var formPT = [];
+			formPT.push( $('.fname input').val() );
+			formPT.push( $('.lname input').val() );
+			formPT.push( $('.email input').val() );
+			formPT.push( $('.phone input').val() );
+			console.log(formPT);
+
+			$('table').append('<tr>new info</tr>');
+			for (var i = 0; i < formPT.length; i++) {
+				$('table').find('tr:last').append('<td>' + formPT[i] +'</td>');
+			}
+		});
+
+	});
+</script>
+
+</body>
+</html>
