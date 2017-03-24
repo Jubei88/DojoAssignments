@@ -94,31 +94,16 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-	function attachHandlers(element) {
-			$('element').click( function() {
-				alert('You clicked an H3!');
-			});
-	}
-
 		var moreInfo;
 		$("form").submit(function(e) {
 			e.preventDefault();
-			// var formPT = [];
-			// formPT.push( $('.fname input').val() );
-			// formPT.push( $('.lname input').val() );
-			// formPT.push( $('textarea').text() );
-
-
-		$('.right').prepend('<div><h1>' + $('.fname input').val() + ' ' +  $('.lname input').val() +  '</h1><h5>Click for Description!</h5><p class="hide">' + $('.description textarea').val() + '</p></div>');
-
-		});
-		$(document).on('click', '.right div', function(e){
-			e.preventDefault();
-			$(this).children('h1,h5,p').toggleClass('hide');
-		});
-
+			$('.right').prepend('<div><h1>' + $('.fname input').val() + ' ' +  $('.lname input').val() +  '</h1><h5>Click for Description!</h5><p class="hide">' + $('.description textarea').val() + '</p></div>');
+			});
+			$(document).on('click', '.right div', function(e){
+				e.preventDefault();
+				$(this).children('h1,h5,p').toggleClass('hide');
+			});
 	});
-
 </script>
 
 </body>
