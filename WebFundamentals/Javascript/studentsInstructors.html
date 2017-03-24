@@ -5,7 +5,8 @@
 	<title>Students and Instructors</title>
 </head>
 <body>
-<p>var students = [
+<p>
+var students = [
      {first_name:  'Michael', last_name : 'Jordan'},
      {first_name : 'John', last_name : 'Rosales'},
      {first_name : 'Mark', last_name : 'Guillen'},
@@ -23,22 +24,48 @@ KB Tonel</p>
 
 <script type="text/javascript">
 	"use strict";
+// Version 1
+	// var students = [
+ //     {first_name:  'Michael', last_name : 'Jordan'},
+ //     {first_name : 'John', last_name : 'Rosales'},
+ //     {first_name : 'Mark', last_name : 'Guillen'},
+ //     {first_name : 'KB', last_name : 'Tonel'}
+	// ]
 
-	var students = [
-     {first_name:  'Michael', last_name : 'Jordan'},
-     {first_name : 'John', last_name : 'Rosales'},
-     {first_name : 'Mark', last_name : 'Guillen'},
-     {first_name : 'KB', last_name : 'Tonel'}
-	]
+ //    var i, item;
+ //    for (i = 0; i < students.length; i++) {
+ //    //      console.log( students.length );
+ //      var letters = students[i].first_name.length + students[i].last_name.length;
+ //      console.log(i + " - " + students[i].first_name + " " + students[i].last_name + " - " + letters);
 
-var i, item;
-for (i = 0; i < students.length; i++) {
-//      console.log( students.length );
-  var letters = students[i].first_name.length + students[i].last_name.length;
-  console.log(i + " - " + students[i].first_name + " " + students[i].last_name + " - " + letters);
+ //    }
 
-}
-
+// Version 2
+    var users = {
+    'Students': [
+       {first_name:  'Michael', last_name : 'Jordan'},
+       {first_name : 'John', last_name : 'Rosales'},
+       {first_name : 'Mark', last_name : 'Guillen'},
+       {first_name : 'KB', last_name : 'Tonel'}
+    ],
+    'Instructors': [
+       {first_name : 'Michael', last_name : 'Choi'},
+       {first_name : 'Martin', last_name : 'Puryear'}
+    ]
+    }
+    function school(users){
+      var count = 1,
+          length = 0;
+      for ( var key in users ) {
+        console.log(key);
+        for(var i in users[key]) {
+          length=users[key][i].first_name.length+users[key][i].last_name.length;
+          console.log(count + " - " + users[key][i].first_name + " " + users[key][i].last_name + " - " + length);
+          count++;
+        }
+      }
+    }
+    school(users);
 </script>
 
 </body>

@@ -98,11 +98,11 @@
 		$("form").submit(function(e) {
 			e.preventDefault();
 			$('.right').prepend('<div><h1>' + $('.fname input').val() + ' ' +  $('.lname input').val() +  '</h1><h5>Click for Description!</h5><p class="hide">' + $('.description textarea').val() + '</p></div>');
-			});
-			$(document).on('click', '.right div', function(e){
-				e.preventDefault();
-				$(this).children('h1,h5,p').toggleClass('hide');
-			});
+		});
+		$(document).on('click', '.right div', function(e){
+			e.preventDefault();
+			$(this).children('h1,h5,p').toggleClass('hide');
+		});
 	});
 </script>
 
