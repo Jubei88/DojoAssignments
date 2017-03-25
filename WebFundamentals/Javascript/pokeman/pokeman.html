@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pokeman Images</title>
+	<script src="../script/jquery-3.2.0.min.js"></script>
+<!-- 	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+ -->
+ <style type="text/css">
+ 	.wrapper {
+ 		width: 940px;
+ 		margin: 30px auto;
+ 	}
+ 	.pokeImg, .pokeSummary {
+ 		display: inline-block;
+ 		vertical-align: top;
+ 	}
+ 	.pokeImg {
+ 		width: 600px;
+ 	}
+ 	.pokeSummary {
+ 		display: none;
+ 		width: 220px;
+ 		margin-left: 15px;
+ 		border: 2px solid brown;
+ 		padding: 5px 20px;
+ 	}
+ 	img {
+ 		display: inline-block;
+ 		padding: 10px;
+ 		width: 96px;
+ 	}
+ 	.show {
+ 		display: inline-block;
+ 	}
+ </style>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>Pokeman: Assignment</h1>
+		<div class="pokeImg"></div>
+		<div class="pokeSummary">
+			<h2></h2>
+			<div class="imgPoke"></div>
+			<h3>Types</h3>
+			<ul></ul>
+			<h3>Height:<span class="height"></span></h3>
+			<h3>Weight:<span class="weight"></span></h3>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var imgID = 0;
+			var pokeName = " ";
+			var pokeWeight = "";
+			var pokeHeight = "";
+			var pokeType = "";
+			for ( var i = 1; i <= 151; i++ ) {
+				// console.log(i);
+				var pokemonId = "http://pokeapi.co/api/v1/pokemon/" + i;
+				$.get(pokemonId, function(res) {
+        	// console.log(res.name);
+        	pokeName = res.name;
+        }, "json");
+				$('.pokeImg').append('<img data-pokeId="' + i + '" src="pokemon/full/' + i + '.png"></div>');
+			}
+
+			$(document).on('click', 'img', function() {
+				window.scrollTo(10, 10);
+				$('.pokeSummary').addClass('show')
+				$('.pokeSummary h2').text("");
+      	$('.height').text("");
+      	$('.weight').text("");
+      	$('ul').children().remove();
+				imgID = $(this).attr('data-pokeId');
+				console.log(imgID);
+				var pokemonId = "http://pokeapi.co/api/v1/pokemon/" + imgID;
+				$.get(pokemonId, function(res) {
+        	pokeName = res.name;
+        	pokeWeight = res.weight;
+        	pokeHeight = res.height;
+        	pokeType = res.types[0].name;
+        	console.log(pokeName , pokeWeight, pokeHeight, pokeType);
+        	$('.pokeSummary h2').append(pokeName);
+        	$('.height').append(' ' + pokeHeight);
+        	$('.weight').append(' ' + pokeWeight);
+        	for ( var j = 0; j< res.types.length; j++ ) {
+        		$('ul').prepend('<li>' + res.types[j].name + '</li>');
+        	}
+
+        }, "json");
+
+
+			} );
+
+
+		$.get( 'http://pokeapi.co/api/v1/pokemon/1', function(res) {
+   		console.log(res.name)
+		}, "json");
+
+      // $.get("http://pokeapi.co/api/v1/pokemon/1",
+      // 	function(res) {
+      //   	console.log(res);
+      //   }, "json");
+
+
+
+			}); // end of doc ready
+
+
+
+//Scrap
+// $(document).ready(function(){
+//             $.get("http://pokeapi.co/api/v1/pokemon/1/", function(res) {
+//                     console.log(res);
+//                 }, "json");
+//     })
+
+
+	</script>
+
+</body>
+</html>
