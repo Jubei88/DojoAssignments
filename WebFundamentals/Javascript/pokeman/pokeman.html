@@ -73,6 +73,7 @@
 				$('.pokeSummary h2').text("");
       	$('.height').text("");
       	$('.weight').text("");
+      	$('.imgPoke').children().remove();
       	$('ul').children().remove();
 				imgID = $(this).attr('data-pokeId');
 				console.log(imgID);
@@ -84,6 +85,7 @@
         	pokeType = res.types[0].name;
         	console.log(pokeName , pokeWeight, pokeHeight, pokeType);
         	$('.pokeSummary h2').append(pokeName);
+        	$('.imgPoke').append('<img data-pokeId="' + i + '" src="pokemon/full/' + imgID + '.png">');
         	$('.height').append(' ' + pokeHeight);
         	$('.weight').append(' ' + pokeWeight);
         	for ( var j = 0; j< res.types.length; j++ ) {
