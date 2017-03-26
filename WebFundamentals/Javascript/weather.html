@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Weather app - the basics</title>
+		<script src="script/jquery-3.2.0.min.js"></script>
+<!-- 	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+ -->
+</head>
+<body>
+	<h1>Weather app</h1>
+
+	<form>
+		<div class="zipCode">
+			<label for="zip">Enter Zip Code:</label>
+			<input id="zip" type="text" name="zip">
+		</div>
+		<input type="submit" name="Submit" value="Submit">
+	</form>
+	<div class="results">
+		<h2></h2>
+		<p></p>
+	</div>
+
+<!-- 	{"coord":{"lon":-122.21,"lat":47.68},"weather":[{"id":500,"main":"Rain","description":"light rain","icon":"10d"}],"base":"stations","main":{"temp":283.64,"pressure":1019,"humidity":66,"temp_min":282.15,"temp_max":285.15},"visibility":16093,"wind":{"speed":3.1},"clouds":{"all":90},"dt":1490482380,"sys":{"type":1,"id":2949,"message":0.1426,"country":"US","sunrise":1490450331,"sunset":1490495442},"id":5799841,"name":"Kirkland","cod":200} -->
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		var apiKey = '88930604cf7b425ca5c417dd763b43c2';
+		var zip = 0;
+
+    $('form').submit(function(e) {
+    	// e.preventDefault();
+    	zip = $('#zip').val();
+    	console.log(zip);
+        // your code here ( 88930604cf7b425ca5c417dd763b43c2 ) - api.openweathermap.org/data/2.5/weather?zip=94040,us&&appid= 88930604cf7b425ca5c417dd763b43c2
+      $.get("http://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&units=imperial&&appid=" + apiKey , function(res) {
+          console.log(res);
+          $('.results h2').append(res.name);
+          $('.results p').html('<p>Temperature: ' + res.main.temp + '</p>');
+      }, 'json');
+        // don't forget to return false so the page doesn't refresh
+        return false;
+    });
+});
+</script>
+
+</body>
+</html>
