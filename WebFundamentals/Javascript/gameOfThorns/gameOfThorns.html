@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Game of Thorns</title>
+		<script src="../script/jquery-3.2.0.min.js"></script>
+<!-- 	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+ -->
+ <style type="text/css">
+ 	.wrapper {
+ 		width: 900px;
+ 		margin: 0 auto;
+ 	}
+ 	img {
+ 		display: inline-block;
+ 		width: 200px;
+ 	}
+ 	form {
+ 		display: block;
+ 		width: 600px;
+ 		margin: 50px auto;
+ 	}
+ 	div + div {
+ 		margin-left: 20px;
+ 	}
+ 	.house {
+ 		display: inline-block;
+ 		width: 200px;
+ 		height: 200px;
+ 		border: 2px ridge rgba(0, 0, 0, 0.48);
+ 		box-sizing: border-box;
+ 	}
+ 	.stark { background: url("images/stark.jpg") no-repeat center center / cover; 	}
+ 	.targaryen { background: url("images/targaryen.jpg") no-repeat center center / cover; 	}
+ 	.lannister { background: url("images/lannister.jpg") no-repeat center center / cover; 	}
+ 	.baratheon { background: url("images/baratheon.png") no-repeat center center / cover; 	}
+ 	.arms-stark {
+ 		background: url("http://vignette4.wikia.nocookie.net/gameofthrones/images/8/8a/House-Stark-Main-Shield.PNG/revision/latest?cb=20170101103142") no-repeat 394px 12px;
+ 		background-size: 200px;
+ 	}
+ 	.arms-targaryen {
+ 		background: url("http://vignette2.wikia.nocookie.net/gameofthrones/images/4/43/House-Targaryen-Main-Shield.PNG/revision/latest?cb=20161206005534") no-repeat 394px 12px;
+ 		background-size: 200px;
+ 	}
+ 	.arms-lannister {
+ 		background: url("http://vignette3.wikia.nocookie.net/gameofthrones/images/8/8a/House-Lannister-Main-Shield.PNG/revision/latest?cb=20170101095357") no-repeat 394px 12px;
+ 		background-size: 200px;
+ 	}
+ 	.arms-baratheon {
+ 		background: url("http://vignette4.wikia.nocookie.net/gameofthrones/images/0/00/House-Baratheon-Main-Shield.PNG/revision/latest?cb=20161206005433") no-repeat 394px 12px;
+ 		background-size: 200px;
+ 	}
+
+ </style>
+</head>
+<body>
+<section class="wrapper">
+	<h1>Houses of Games of Thorns</h1>
+	<div data-house="362" class="house stark"></div> <!-- 362 -->
+	<div data-house="378" class="house targaryen"></div> <!-- 378 -->
+	<div data-house="229" class="house lannister"></div> <!-- 229 -->
+	<div data-house="17" class="house baratheon"></div> <!-- 17 -->
+	<form>
+	  <fieldset>
+	    <legend>House Details</legend>
+	    <p>Name: </p><span data-name="name"></span>
+	    <p>Words: </p><span data-name="words"></span>
+	    <p>Titles: </p><ul data-name="titles"></ul>
+	  </fieldset>
+	</form>
+</section>
+
+<!-- http://www.anapioficeandfire.com/api/houses.  ' + houseNum -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+	var houseNum = "362";
+
+	$.get( 'http://www.anapioficeandfire.com/api/houses/' + houseNum , function(res) {
+		console.log(res.name);
+		console.log(res.words);
+		console.log(res.titles);
+
+		// $('form').data('data-name' , "name")
+		$(' form span[data-name="name"] ').html(res.name);
+		$(' form span[data-name="words"] ').html(res.words);
+		for ( var t = 0; t < res.titles.length; t++ ){
+			$(' form ul[data-name="titles"] ').append('<li>' + res.titles[t] + '</li>');
+		}
+		if ( houseNum == "362" ) {
+			$('form').addClass('arms-stark');
+		}
+	}, 'json' );
+
+	$('div').click(function(e) {
+			e.preventDefault();
+			houseNum = $(this).attr('data-house');
+			$('form').removeClass();
+			$(' form ul[data-name="titles"] ').children('li').remove();
+			console.log(houseNum);
+			$.get( 'http://www.anapioficeandfire.com/api/houses/' + houseNum , function(res) {
+				$(' form span[data-name="name"] ').html(res.name);
+				$(' form span[data-name="words"] ').html(res.words);
+				for ( var t = 0; t < res.titles.length; t++ ){
+					$(' form ul[data-name="titles"] ').append('<li>' + res.titles[t] + '</li>');
+				}
+				if ( houseNum == "362" ) {
+					$('form').addClass('arms-stark');
+				} else if ( houseNum == "378" ) {
+					$('form').addClass('arms-targaryen');
+				} else if ( houseNum == "229" ) {
+					$('form').addClass('arms-lannister');
+				} else if ( houseNum == "17" ) {
+					$('form').addClass('arms-baratheon');
+				}
+			}, 'json' );
+
+	})
+
+
+
+});
+</script>
+</body>
+</html>
