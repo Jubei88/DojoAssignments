@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- saved from url=(0111)file:///Users/joelburris/Documents/CodingDojo/DojoAssignments/WebFundamentals/Javascript/pokemonGame/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>Pokemon the Game</title>
+		<script src="./Pokemon the Game_files/jquery-3.2.0.min.js"></script>
+<!-- 	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+ -->
+ <style type="text/css">
+ body {
+ 	background-color: black;
+ 	color: white;
+ }
+ .wrapper { display: none; }
+ .row div {
+ 	display: inline-block;
+ 	width: 20px;
+ 	height: 20px;
+ 	border: 1px solid black;
+ }
+	.brick {
+		background-color: blue;
+	}
+	.trc { border-top-right-radius: 10px; }
+	.tlc { border-top-left-radius: 10px; }
+	.brc { border-bottom-right-radius: 10px; }
+	.blc { border-bottom-left-radius: 10px; }
+	.coin {
+		background: url(images/coin.gif) no-repeat center center;
+	}
+	.empty {  }
+	.pacman {
+		background: url(images/pacman.gif) no-repeat center center;
+		background-size: cover;
+	}
+ </style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="row">
+			<div class="brick tlc"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+		</div>
+		<div class="row">
+			<div class="brick"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="pacman"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="brick"></div>
+		</div>
+		<div class="row">
+			<div class="brick"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="brick"></div>
+		</div>
+		<div class="row">
+			<div class="brick"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="coin"></div>
+			<div class="brick"></div>
+		</div>
+		<div class="row">
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+			<div class="brick"></div>
+		</div>
+	</div>
+	<div id="world">working</div>
+
+
+
+<script type="text/javascript">
+// List of features
+// 1) let js displayeverything
+// 2) Mave the pacman move up and down
+
+// $(document).ready(function() {
+	console.log("it is up");
+	var world = [
+		[2,2,2,2,2,2,2,2,2,2],
+		[2,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,2],
+		[2,2,2,2,2,2,2,2,2,2]
+	];
+
+	function displayWorld() {
+		var output = '';
+		for ( var i = 0; i < world.length; i++ ) {
+			output += '\n<div class="row">';
+			for ( var j = 0; j < world[i].length; j++ ) {
+				if ( world[i][j] == 2 )
+					output += '\n\t<div class="brick"></div>';
+				 else if ( world[i][j] == 1 )
+					output += '\n\t<div class="coin"></div>';
+				 else if ( world[i][j] == 0 )
+					output += '\n\t<div class="empty"></div>';
+
+			}
+			output += '\n</div>';
+		}
+		console.log(output);
+		document.getElementById('world').innerHTML = output;
+		// $('#world').append(output);
+	};
+document.getElementById('world').innerHTML = "working";
+// });
+
+</script>
+
+</body></html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pokemon the Game</title>
+		<script src="../script/jquery-3.2.0.min.js"></script>
+<!-- 	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+ -->
+ <style type="text/css">
+ * {
+ 	margin: 0; padding: 0;
+ }
+ div {
+/* 	display: inline-block;*/
+ }
+ body {
+ 	background-color: black;
+ 	color: white;
+ }
+ .wrapper {
+ 	position: relative;
+ 	display: block;
+ 	width: 600px;
+ 	margin: 0 auto;
+ }
+ .row { float: left; }
+ .row div {
+ 	width: 20px;
+ 	height: 20px;
+ 	font-size: 0;
+ }
+.brick { background-color: blue; }
+.trc { border-top-right-radius: 10px; }
+.tlc { border-top-left-radius: 10px; }
+.brc { border-bottom-right-radius: 10px; }
+.blc { border-bottom-left-radius: 10px; }
+.coin {
+	background: url(images/coin.gif) no-repeat center center;
+}
+.empty {  }
+.cherry {
+	background: url(images/cherry.png) no-repeat center;
+	background-size: cover;
+	width: 20px; height: 20px;
+}
+#pacman {
+	position: absolute;
+	background: url(images/pacman.gif) no-repeat center;
+	background-size: cover;
+	width: 20px; height: 20px;
+}
+#blinky {
+	position: absolute;
+	background: url(images/blinky.png) no-repeat center;
+	background-size: cover;
+	width: 20px; height: 20px;
+}
+#scoreBox {
+  position: absolute;
+  box-sizing: border-box;
+  display: block;
+  top: 25px;
+  left: -120px;
+  color: white;
+  font-size: 22px;
+  line-height: 30px;
+  padding: 0 15px;
+  border: 1px solid white;
+}
+#lives {
+  position: absolute;
+  box-sizing: border-box;
+  display: block;
+  top: 66px;
+  left: -120px;
+  color: white;
+  font-size: 22px;
+  line-height: 30px;
+  padding: 0 15px;
+  border: 1px solid white;
+}
+#over {
+  position: absolute;
+  box-sizing: border-box;
+  display: block;
+  top: 100px;
+  left: -150px;
+  color: red;
+  font-size: 26px;
+  line-height: 30px;
+}
+ </style>
+</head>
+<body>
+	<div class="wrapper">
+		<div id=world></div>
+		<div id="pacman"></div>
+		<div id="scoreBox">0</div>
+		<div id="lives">3</div>
+		<div id="over"></div>
+		<div id="blinky"></div>
+	</div>
+
+
+
+<script type="text/javascript">
+// http://www.gamasutra.com/view/feature/3938/the_pacman_dossier.php?print=1
+
+//  x Prevent Pacman from leaving the maze or going through the walls.
+//  x Change the world map and make the maze more interesting!
+//  x Get cherries to appear. Cherry = 50 pts.
+//  x Get Pacman to lookup up/down/left/right depending on the direction Pacman is moving.
+//  x (Optional) Get a ghost to show up (the ghost does not have to move yet). When Pacman meets the ghost, have Pacman lose its life.
+//  (Optional) Get the ghost to move around in random directions.
+//  (Optional) Get two Pacmans to show up and move! (use one keyboard to move 2 Pacmans)
+
+$(document).ready(function() {
+	var world = [
+		[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+		[2,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2],
+		[2,1,1,2,1,2,2,2,1,1,1,2,1,2,2,2,1,1,1,2,1,2,2,2,1,1,1,2],
+		[2,1,1,2,1,2,1,2,1,1,1,2,1,2,1,2,1,1,1,2,1,1,1,2,1,1,1,2],
+		[2,1,1,2,1,2,1,2,1,1,1,2,1,2,1,2,1,1,1,2,1,2,2,2,1,1,3,2],
+		[2,1,1,2,2,2,1,2,1,1,1,2,2,2,1,1,1,1,1,2,2,2,1,2,1,1,1,2],
+		[2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,2],
+		[2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,2,1,2,1,2,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,2,2,2,2,2],
+		[2,1,1,2,2,2,1,2,1,1,1,2,2,2,1,2,1,1,1,2,2,2,1,2,1,1,1,2],
+		[2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2,1,1,2,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,2,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,2,1,1,1,1,1,2,2,2],
+		[2,1,1,2,1,2,2,2,1,1,1,2,0,2,1,2,1,1,1,2,1,2,2,2,1,1,1,2],
+		[2,1,1,2,1,2,1,2,1,1,1,0,0,2,1,2,1,1,1,2,1,2,1,2,1,1,1,2],
+		[2,1,1,2,1,2,1,2,1,1,1,0,0,2,1,2,1,1,1,2,1,2,1,2,1,1,1,2],
+		[2,1,1,2,2,2,1,2,1,1,1,2,0,2,1,2,1,1,1,2,2,2,1,2,1,1,1,2],
+		[2,1,1,2,2,2,1,2,1,1,1,2,2,2,1,2,1,1,1,2,2,2,1,2,1,1,3,2],
+		[2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,2,1,2,1,2,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,2,2,2,1,2],
+		[2,1,1,2,2,2,1,2,1,1,1,2,2,2,1,2,1,1,1,2,2,2,1,2,1,1,1,2],
+		[2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2],
+		[2,1,1,2,1,2,1,2,1,1,1,2,1,2,2,2,1,1,1,2,1,2,2,2,1,1,1,2],
+		[2,1,1,2,1,2,1,2,1,1,1,2,1,2,1,2,1,1,1,2,1,1,1,2,2,2,1,2],
+		[2,1,1,2,1,2,1,2,1,3,1,2,1,2,1,2,1,1,1,2,1,2,1,2,1,1,1,2],
+		[2,3,1,2,1,2,1,2,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,1,1,2],
+		[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
+	];
+	var score = 0;
+	var gameActive = true;
+	var lives = 3;
+	// var $pmLocate = $('.pacman');
+	var pacman = { x: 1, y: 1 };
+	var blinky = { x: 14, y: 12 };
+
+	function displayWorld(){
+		var output = "";
+		for (var i = 0; i < world.length; i++) {
+			output += '<div class="row">\n'
+			for (var j = 0; j < world[i].length; j++) {
+				if(world[i][j] == 2 ) {
+					output += "<div class='brick'></div>";
+				} else if(world[i][j] == 1 ) {
+					output += "<div class='coin'></div>";
+				} else if(world[i][j] == 0 ) {
+					output += "<div class='empty'></div>";
+				} else if(world[i][j] == 3 ) {
+					output += "<div class='cherry'></div>";
+				}
+			}
+			output += "</div>\n"
+		}
+		// console.log(output)
+		$('#world').html(output);
+	}
+	function displayPacman(){
+		document.getElementById('pacman').style.top = pacman.y*20+"px";
+		document.getElementById('pacman').style.left = pacman.x*20+"px";
+	}
+	function displayBlinky(){
+		document.getElementById('blinky').style.top = blinky.y*20+"px";
+		document.getElementById('blinky').style.left = blinky.x*20+"px";
+	}
+
+	function displayScore() {
+		$('#scoreBox').html(score);
+	}
+
+	function displayLives() {
+		$('#lives').html(lives);
+	}
+	function gameOver() {
+		if (lives == 0 ) {
+			gameActive = false;
+		}
+	}
+
+
+	displayWorld();
+	displayPacman();
+	displayBlinky();
+	displayScore();
+	displayLives();
+
+
+// if (gameActive) {
+// 	displayPacman();
+// 	displayWorld();
+// }
+
+document.onkeydown = function(e) {
+	// console.log(e.keyCode)
+	if (e.keyCode == 37) { // left arrow
+		if ( world[pacman.x-1][pacman.y] != 2 ) {
+			pacman.x --;
+			$('#pacman').css('transform','rotate(180deg');
+		}
+	} else if (e.keyCode == 38) { // up arrow
+			if ( world[pacman.x][pacman.y-1] != 2 ) {
+			pacman.y --;
+			$('#pacman').css('transform','rotate(270deg');
+		}
+	} else if (e.keyCode == 39) { //right arrow
+		if ( world[pacman.x+1][pacman.y] != 2 ) {
+			pacman.x ++;
+			$('#pacman').css('transform','rotate(00deg');
+		}
+	} else if (e.keyCode == 40) { // down arrow
+		if ( world[pacman.x][pacman.y+1] != 2 ) {
+			pacman.y ++;
+			$('#pacman').css('transform','rotate(90deg');
+		}
+	}
+
+	if ( world[pacman.x][pacman.y] == 1 ) {
+		world[pacman.x][pacman.y] = 0;
+		score += 100;
+	} else if ( world[pacman.x][pacman.y] == 3 ) {
+		world[pacman.x][pacman.y] = 0;
+		score += 200;
+	}
+
+
+	displayWorld();
+	displayScore();
+	displayPacman();
+
+	if ( pacman.x === blinky.x && pacman.y == blinky.y ) {
+			console.log("you died");
+			lives--;
+			if ( lives > 0 ) {
+				pacman.x = 1;
+				pacman.y = 1;
+				displayLives();
+				displayPacman();
+			} else if ( lives === 0 ) {
+				displayLives();
+				$('#over').append("GameOver");
+			}
+		}
+}
+
+
+
+});
+
+</script>
+</body>
+</html>
